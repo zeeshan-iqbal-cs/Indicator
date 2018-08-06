@@ -6,6 +6,7 @@ public:
   static const bool INVERTED = LOW;// This will go low first and than high
   Indicator();
   Indicator(int);
+  void set(const int STATE);
   void blink(int cycleLength = 1000,
               int numberOfCycles = 1,
               bool transition = Indicator::NORMAL,
@@ -33,4 +34,7 @@ void Indicator::blink(int cycleLength,
     digitalWrite(indication_pin, !transition);
     delay(cycleLength * (1 - ratio));
   }
+}
+void Indicator::set(const int STATE){
+  digitalWrite(indication_pin, STATE);
 }
